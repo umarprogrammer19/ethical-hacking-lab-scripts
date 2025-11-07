@@ -37,8 +37,8 @@ Each tool focuses on a specific class of web or network vulnerability, implement
 
 ### Clone the repository
 ```bash
-git clone https://github.com/<your-username>/<your-repo-name>.git
-cd <your-repo-name>
+git clone https://github.com/umarprogrammer19/ethical-hacking-lab-scripts
+cd ethical-hacking-lab-scripts
 ```
 
 ### Run a specific tool
