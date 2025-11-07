@@ -13,16 +13,12 @@ func checkService(host string, port int, timeout time.Duration) (string, error) 
 	address := fmt.Sprintf("%s:%d", host, port)
 	conn, err := net.DialTimeout("tcp", address, timeout)
 	if err != nil {
-		// connection failed / port closed
 		return "", nil
 	}
-	// Ensure the connection is closed
 	defer conn.Close()
 
-	// Wait for potential banner (mimics your time.sleep(1) in Python)
 	time.Sleep(1 * time.Second)
 
-	// Set a read deadline so Read won't block forever
 	_ = conn.SetReadDeadline(time.Now().Add(timeout))
 
 	buf := make([]byte, 1024)
@@ -36,7 +32,6 @@ func checkService(host string, port int, timeout time.Duration) (string, error) 
 	return fmt.Sprintf("%d: OPEN - Banner: %s", port, banner), nil
 }
 
-// simple banner sanitizer (trim whitespace)
 func sanitizeBanner(s string) string {
 	return string([]byte(s))
 }
